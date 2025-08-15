@@ -1,33 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
+import Section from './components/Section.jsx';
+
 function App() {
-  const [count, setCount] = useState(0)
+
+  const generalInfoFields = [
+    { name: 'Name', type: 'text' },
+    { name: 'Email', type: 'email' },
+    { name: 'Phone number', type: 'tel' },
+  ];
+  const educationalExpFields = [
+    { name: 'School name', type: 'text' },
+    { name: 'Title of study', type: 'text' },
+    { name: 'Date of study', type: 'date' },
+  ];
+  const practicalExpFields = [
+    { name: 'Company name', type: 'text' },
+    { name: 'Position title', type: 'text' },
+    { name: 'Main responsabilities', type: 'text' },
+    { name: 'Start date', type: 'date' },
+    { name: 'End date', type: 'date' }
+  ];
+
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Section title='General Info' fields={generalInfoFields}></Section>
+      <Section title='Educational Exp' fields={educationalExpFields}></Section>
+      <Section title='Practical Exp' fields={practicalExpFields}></Section>
     </>
   )
 }
