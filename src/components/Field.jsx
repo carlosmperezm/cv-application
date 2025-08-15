@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-export default function Field({ title, type = 'text' }) {
+export default function Field({ title, disabled, type = 'text' }) {
   const [value, setValue] = useState('');
+
 
   function handleKeyPress(e) {
     setValue(e.target.value);
@@ -10,7 +11,21 @@ export default function Field({ title, type = 'text' }) {
   return (
     <label>
       {title}:
-      <input type={type} value={value} onChange={handleKeyPress} />
+      {type === 'textarea'
+        ?
+        <textarea
+          value={value}
+          disabled={disabled}
+          onChange={handleKeyPress}>
+        </textarea>
+        :
+        <input
+          type={type}
+          value={value}
+          disabled={disabled}
+          onChange={handleKeyPress}
+        />
+      }
     </label>
   )
 }
