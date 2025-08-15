@@ -7,7 +7,12 @@ export default function Section({ title, fields }) {
       <fieldset>{title}
         <div className='fields-container'>
           {fields.map(field =>
-            <Field key={field.id} title={field.name} type={field.type}></Field>
+            <Field
+              key={field.id}
+              disabled={field.disabled}
+              title={field.name}
+              type={field.type}>
+            </Field>
           )}
         </div>
       </fieldset>

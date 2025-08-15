@@ -12,7 +12,7 @@ export const educationalExpFields = [
 export const practicalExpFields = [
   { name: 'Company name', type: 'text', id: crypto.randomUUID() },
   { name: 'Position title', type: 'text', id: crypto.randomUUID() },
-  { name: 'Main responsabilities', type: 'text', id: crypto.randomUUID() },
+  { name: 'Main responsabilities', type: 'textarea', id: crypto.randomUUID() },
   { name: 'Start date', type: 'date', id: crypto.randomUUID() },
   { name: 'End date', type: 'date', id: crypto.randomUUID() }
 ];

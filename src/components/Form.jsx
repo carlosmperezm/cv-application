@@ -12,7 +12,44 @@ import Button from './Button.jsx';
 export default function Form() {
   const [submitted, setSubmit] = useState(false);
 
-  if (submitted) return <h1>Submitted</h1>
+  if (submitted) {
+    const readOnlyGenInfoFields = generalInfoFields.map(
+      (field) => {
+        return { ...field, disabled: true };
+      }
+    )
+    const readOnlyEduExpFields = educationalExpFields.map(
+      (field) => {
+        return { ...field, disabled: true };
+      }
+    )
+    const readOnlyPractExpFields = practicalExpFields.map(
+      (field) => {
+        return { ...field, disabled: true };
+      }
+    )
+    return (
+      <>
+        <Section
+          title='General Info'
+          fields={readOnlyGenInfoFields}>
+        </Section>
+        <Section
+          title='Educational Exp'
+          fields={readOnlyEduExpFields}>
+        </Section>
+        <Section
+          title='Practical Exp'
+          fields={readOnlyPractExpFields}>
+        </Section>
+        <Button text='Edit' onClick={handleEdit}></Button>
+      </>
+    )
+  }
+
+  function handleEdit() {
+    setSubmit(false);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
