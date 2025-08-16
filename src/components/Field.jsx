@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-export default function Field({ title, disabled, type = 'text' }) {
-  const [value, setValue] = useState('');
-
+export default function Field({ text = '', title, disabled, onChange, type = 'text' }) {
+  const [value, setValue] = useState(text);
 
   function handleKeyPress(e) {
     setValue(e.target.value);
+    onChange(title, e.target.value);
   }
 
   return (

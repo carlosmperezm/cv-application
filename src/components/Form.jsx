@@ -9,58 +9,74 @@ import {
 import Section from './Section.jsx';
 import Button from './Button.jsx';
 
+const genInfoFields = [...generalInfoFields];
+const eduExpFields = [...educationalExpFields];
+const practExpFields = [...practicalExpFields];
+
 export default function Form() {
   const [submitted, setSubmit] = useState(false);
 
+  function disableField(field) {
+    return { ...field, disabled: true };
+  }
+  function handleEdit() {
+    setSubmit(false);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    setSubmit(true);
+  }
+  function updateData(labelName, newValue) {
+    function updateField(field, index) {
+      if (field.name === labelName) {
+        this[index].value = newValue;
+      }
+    }
+    generalInfoFields.forEach(updateField, genInfoFields);
+    educationalExpFields.forEach(updateField, eduExpFields);
+    practicalExpFields.forEach(updateField, practExpFields);
+  }
+
   if (submitted) {
-    const readOnlyGenInfoFields = generalInfoFields.map(
-      (field) => {
-        return { ...field, disabled: true };
-      }
-    )
-    const readOnlyEduExpFields = educationalExpFields.map(
-      (field) => {
-        return { ...field, disabled: true };
-      }
-    )
-    const readOnlyPractExpFields = practicalExpFields.map(
-      (field) => {
-        return { ...field, disabled: true };
-      }
-    )
     return (
       <>
         <Section
           title='General Info'
-          fields={readOnlyGenInfoFields}>
+          fields={genInfoFields.map(disableField)}>
         </Section>
         <Section
           title='Educational Exp'
-          fields={readOnlyEduExpFields}>
+          fields={eduExpFields.map(disableField)}>
         </Section>
         <Section
           title='Practical Exp'
-          fields={readOnlyPractExpFields}>
+          fields={practExpFields.map(disableField)}>
         </Section>
         <Button text='Edit' onClick={handleEdit}></Button>
       </>
     )
   }
 
-  function handleEdit() {
-    setSubmit(false);
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setSubmit(true);
-  }
-
   return (
     <form onSubmit={handleSubmit}>
-      <Section title='General Info' fields={generalInfoFields}></Section>
-      <Section title='Educational Exp' fields={educationalExpFields}></Section>
-      <Section title='Practical Exp' fields={practicalExpFields}></Section>
+      <Section
+        title='General Info'
+        fields={genInfoFields}
+        onChange={updateData}
+      >
+      </Section>
+      <Section
+        title='Educational Exp'
+        fields={eduExpFields}
+        onChange={updateData}
+      >
+      </Section>
+      <Section
+        title='Practical Exp'
+        fields={practExpFields}
+        onChange={updateData}
+      >
+      </Section>
       <Button text='Submit CV' type='submit'></Button>
     </form>
   )
