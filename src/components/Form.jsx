@@ -1,11 +1,10 @@
+import '../styles/form.css';
 import { useState } from 'react';
-
 import {
   generalInfoFields,
   educationalExpFields,
   practicalExpFields
 } from '../data.js';
-
 import Section from './Section.jsx';
 import Button from './Button.jsx';
 

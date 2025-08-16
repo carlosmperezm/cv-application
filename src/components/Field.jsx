@@ -1,3 +1,4 @@
+import '../styles/field.css';
 import { useState } from "react";
 
 export default function Field({ text = '', title, disabled, onChange, type = 'text' }) {
@@ -10,7 +11,7 @@ export default function Field({ text = '', title, disabled, onChange, type = 'te
 
   return (
     <label>
-      {title}:
+      <p>{title}: </p>
       {type === 'textarea'
         ?
         <textarea

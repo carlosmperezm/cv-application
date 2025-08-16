@@ -1,0 +1,54 @@
+input,
+textarea {
+  border: 1px solid #ddd8;
+  border-radius: 10px;
+  width: 200px;
+  justify-self: center;
+}
+
+label {
+  display: grid;
+  grid-template-areas:
+    'label input';
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+label p {
+  grid-area: label;
+  place-self: center;
+}
+
+
+label input,
+label textarea {
+  grid-area: input;
+  padding: 0 1rem;
+}
+
+label textarea {
+  padding: 4%;
+}
+
+input:disabled,
+textarea:disabled {
+  border: none;
+  background-color: inherit;
+  resize: none;
+  place-self: center;
+  text-align: center;
+  width: 100%;
+}
+
+label:has(input:disabled) {
+  grid-template-columns: 300px;
+  grid-template-areas: 'input';
+  /* background-color: red; */
+  justify-content: center;
+}
+
+p:has(+ input:disabled),
+p:has(+ textarea:disabled) {
+  display: none;
+}

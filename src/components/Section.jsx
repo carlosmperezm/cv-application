@@ -1,10 +1,12 @@
+import '../styles/section.css';
 import Field from './Field.jsx';
 
 
 export default function Section({ title, fields, onChange }) {
   return (
     <section>
-      <fieldset>{title}
+      <fieldset>
+        <legend>{title}</legend>
         <div className='fields-container'>
           {fields.map(field =>
             <Field
