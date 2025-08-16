@@ -2,8 +2,9 @@ input,
 textarea {
   border: 1px solid #ddd8;
   border-radius: 10px;
-  width: 200px;
+  width: 300px;
   justify-self: center;
+  font-size: 1rem;
 }
 
 label {
@@ -19,7 +20,6 @@ label p {
   grid-area: label;
   place-self: center;
 }
-
 
 label input,
 label textarea {
@@ -44,7 +44,6 @@ textarea:disabled {
 label:has(input:disabled) {
   grid-template-columns: 300px;
   grid-template-areas: 'input';
-  /* background-color: red; */
   justify-content: center;
 }
 
