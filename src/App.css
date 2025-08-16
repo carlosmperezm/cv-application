@@ -2,10 +2,12 @@
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
+  transform: scale(.9);
+
 }
 
 #root:has(button[type="button"]) {
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
 
 
